@@ -20,9 +20,12 @@ namespace engine {
     /// <param name='_patch'>The patch version</param>
     /// <exception cref='engine::EngineError'>Throw if <paramref name='_major' />, <paramref name='_minor' />,
     /// or <paramref name='_patch' /> have an value higher than allowed.</exception>
+    /// <returns>Version number</returns>
     uint32_t makeVersionNumber(uint16_t _major, uint16_t _minor, uint16_t _patch);
 
-
+    /// <summary>Creates an Engine Instance</summary>
+    /// <param name='_engine_instance_create_info'>Information about the engine instance</param>
+    /// <returns>An instance of the engine</returns>
     EngineInstance createEngineInstance(EngineInstanceCreateInfo* _engine_instance_create_info);
 }
 
