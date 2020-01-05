@@ -13,10 +13,10 @@
 #include <thread>
 #include <condition_variable>
 
-#define logTrace(x1, x2) x1.log(LoggerLevel::eTrace, x2, std::string(__FILE__), __LINE__)
-#define logInfo(x1, x2) x1.log(LoggerLevel::eInformation, x2, std::string(__FILE__), __LINE__)
-#define logWarning(x1, x2) x1.log(LoggerLevel::eWarning, x2, std::string(__FILE__), __LINE__)
-#define logError(x1, x2) x1.log(LoggerLevel::eError, x2, std::string(__FILE__), __LINE__)
+#define logTrace(x1, x2) x1.log(engine::LoggerLevel::eTrace, x2, std::string(__FILE__), __LINE__)
+#define logInfo(x1, x2) x1.log(engine::LoggerLevel::eInformation, x2, std::string(__FILE__), __LINE__)
+#define logWarning(x1, x2) x1.log(engine::LoggerLevel::eWarning, x2, std::string(__FILE__), __LINE__)
+#define logError(x1, x2) x1.log(engine::LoggerLevel::eError, x2, std::string(__FILE__), __LINE__)
 
 namespace engine {
     enum class LoggerLevel {
