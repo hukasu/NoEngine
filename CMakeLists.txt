@@ -12,6 +12,7 @@ add_library(
 	src/engine/engine_instance/engine_instance.cpp
 	src/engine/engine_instance/engine_instance_t.cpp
 	src/engine/engine_instance/engine_instance_create_info.cpp
+	src/engine/logger/logger.cpp
 )
 target_include_directories(
 	engine
