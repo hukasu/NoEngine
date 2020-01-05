@@ -55,10 +55,10 @@ namespace engine {
 		return m_logger_level;
 	}
 
-	void Logger::log(MessageSeverity _message_severity, std::string _message, std::string _file, uint32_t _line) {
+	void Logger::log(MessageSeverity _message_severity, std::string _message) {
 		if (!m_thread_running || _message_severity < m_logger_level) return;
 		std::stringstream message_builder;
-		message_builder << _message_severity << " " << _file << ":" << _line << ": " << _message;
+		message_builder << _message_severity << ": " << _message;
 		std::string message = message_builder.str();
 		std::unique_lock lck(m_message_queue_mutex);
 		m_message_queue.push(message);
