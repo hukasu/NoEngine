@@ -43,6 +43,8 @@ namespace engine {
         ~Logger();
 
         void changeLoggerLevel(LoggerLevel _logger_level);
+        LoggerLevel getLoggerLevel() const;
+
         void log(MessageSeverity _message_severity, std::string _message, std::string _file, uint32_t _line);
     };
 }

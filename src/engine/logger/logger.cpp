@@ -51,6 +51,10 @@ namespace engine {
 		m_logger_level = _logger_level;
 	}
 
+	LoggerLevel Logger::getLoggerLevel() const {
+		return m_logger_level;
+	}
+
 	void Logger::log(MessageSeverity _message_severity, std::string _message, std::string _file, uint32_t _line) {
 		if (!m_thread_running || _message_severity < m_logger_level) return;
 		std::stringstream message_builder;
