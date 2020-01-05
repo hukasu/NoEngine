@@ -55,6 +55,10 @@ namespace engine {
 		return m_logger_level;
 	}
 
+	bool Logger::canLogLevel(LoggerLevel _logger_level) const {
+		return _logger_level >= m_logger_level;
+	}
+
 	void Logger::log(MessageSeverity _message_severity, std::string _message) {
 		if (!m_thread_running || _message_severity < m_logger_level) return;
 		std::stringstream message_builder;

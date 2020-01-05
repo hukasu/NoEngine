@@ -39,6 +39,7 @@ namespace engine {
 
         void changeLoggerLevel(LoggerLevel _logger_level);
         LoggerLevel getLoggerLevel() const;
+        bool canLogLevel(LoggerLevel _logger_level) const;
 
         void log(MessageSeverity _message_severity, std::string _message);
     };
