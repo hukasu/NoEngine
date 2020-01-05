@@ -32,7 +32,9 @@ namespace engine {
 	}
 
 	void EngineInstance::destroy() {
-		if (EngineInstance_T::validPointer(m_engine_instance_t)) delete m_engine_instance_t;
-		else throw std::runtime_error("TODO");
+		if (EngineInstance_T::validPointer(m_engine_instance_t)) {
+			delete m_engine_instance_t;
+			m_engine_instance_t = nullptr;
+		} else throw std::runtime_error("TODO");
 	}
 }
