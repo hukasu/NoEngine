@@ -62,7 +62,7 @@ namespace engine {
 	void Logger::log(MessageSeverity _message_severity, std::string _message) {
 		if (!m_thread_running || _message_severity < m_logger_level) return;
 		std::stringstream message_builder;
-		message_builder << _message_severity << ": " << _message;
+		message_builder << _message_severity << " " << _message << std::endl;
 		std::string message = message_builder.str();
 		std::unique_lock lck(m_message_queue_mutex);
 		m_message_queue.push(message);
