@@ -14,6 +14,8 @@ namespace engine {
 			return LoggerLevel::eWarning;
 		case VkDebugUtilsMessageSeverityFlagBitsEXT::VK_DEBUG_UTILS_MESSAGE_SEVERITY_ERROR_BIT_EXT:
 			return LoggerLevel::eError;
+		default:
+			return LoggerLevel::eError;
 		}
 	}
 
