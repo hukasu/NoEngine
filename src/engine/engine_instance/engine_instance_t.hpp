@@ -16,14 +16,22 @@
 #include <mutex>
 
 namespace engine {
+    class Logger;
     struct EngineInstanceCreateInfo;
 
     class EngineInstance_T {
         vk::Instance m_vulkan_instance;
+        Logger* m_logger;
 
         uint32_t enumerateVulkanInstanceVersion();
         vk::Instance createVulkanInstance(EngineInstanceCreateInfo* _engine_instance_create_info);
+        std::vector<const char*> collectVulkanLayers();
         std::vector<const char*> collectVulkanInstanceExtensions();
+
+        vk::DebugUtilsMessengerCreateInfoEXT prepareDebugUtilsMessenger(
+            const std::vector<const char*>& _layers,
+            const std::vector<const char*>& _extensions
+        );
     public:
         EngineInstance_T(EngineInstanceCreateInfo* _engine_instance_create_info);
         ~EngineInstance_T();
