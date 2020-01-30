@@ -14,6 +14,7 @@ add_library(
 	src/engine/engine_instance/engine_instance_create_info.cpp
 	src/engine/engine_instance/win64/engine_instance_t_win64.cpp
 	src/engine/engine_instance/debug_utils/debug_utils.cpp
+	src/engine/window/win64/window_t_win64.cpp
 	src/engine/logger/logger.cpp
 )
 target_include_directories(
