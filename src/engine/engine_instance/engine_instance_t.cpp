@@ -34,10 +34,13 @@ namespace engine {
 			m_logger->log(LoggerLevel::eInformation, message_builder.str());
 		}
 
+		m_platform_specific_fields.initialize();
+		if (m_logger) m_logger->log(LoggerLevel::eTrace, "Initialized platform dependent values");
+
 		m_vulkan_instance = createVulkanInstance(
 			_engine_instance_create_info
 		);
-		if (m_logger) m_logger->log(LoggerLevel::eInformation, "Vulkan Instance created");
+		if (m_logger) m_logger->log(LoggerLevel::eTrace, "Vulkan Instance created");
 
 		std::unique_lock<std::mutex> lck(pointer_storage_mutex);
 		pointer_storage.insert(this);
@@ -50,7 +53,10 @@ namespace engine {
 		lck.unlock();
 
 		m_vulkan_instance.destroy();
-		if (m_logger) m_logger->log(LoggerLevel::eInformation, "Vulkan Instance destroyed");
+		if (m_logger) m_logger->log(LoggerLevel::eTrace, "Vulkan Instance destroyed");
+
+		m_platform_specific_fields.destroy();
+		if (m_logger) m_logger->log(LoggerLevel::eTrace, "Initialized platform dependent values");
 	}
 
 	uint32_t EngineInstance_T::enumerateVulkanInstanceVersion() {
@@ -209,7 +215,7 @@ namespace engine {
 				severity |= vk::DebugUtilsMessageSeverityFlagBitsEXT::eInfo;
 			case LoggerLevel::eWarning:
 				severity |= vk::DebugUtilsMessageSeverityFlagBitsEXT::eWarning;
-			case LoggerLevel::eError:
+			default:
 				severity |= vk::DebugUtilsMessageSeverityFlagBitsEXT::eError;
 			}
 			vk::DebugUtilsMessageTypeFlagsEXT message_types =

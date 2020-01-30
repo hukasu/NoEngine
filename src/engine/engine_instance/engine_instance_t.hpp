@@ -7,6 +7,7 @@
 #define __ENGINE__INSTANCE__T__HPP__
 
 #if defined(_WIN64)
+#include "win64/engine_instance_t_win64.hpp"
 #define VK_USE_PLATFORM_WIN32_KHR
 #endif
 #include <vulkan/vulkan.hpp>
@@ -20,6 +21,7 @@ namespace engine {
     struct EngineInstanceCreateInfo;
 
     class EngineInstance_T {
+        EngineInstance_T_PlatformSpecific m_platform_specific_fields;
         vk::Instance m_vulkan_instance;
         Logger* m_logger;
 
@@ -36,6 +38,7 @@ namespace engine {
         EngineInstance_T(EngineInstanceCreateInfo* _engine_instance_create_info);
         ~EngineInstance_T();
 
+    // Static methods
     public:
         static std::set<EngineInstance_T*> pointer_storage;
         static std::mutex pointer_storage_mutex;
